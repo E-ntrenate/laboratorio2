@@ -13,13 +13,17 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int role_id;
-    @Column(nullable = false, length = 20)
-    private String role_name;
+public class UserRole {
+    @EmbeddedId
+    UserRoleKey id;
 
-    @OneToMany(mappedBy = "role")
-    Collection<UserRole> roles;
+    @ManyToOne
+    @MapsId("user_id")
+    @JoinColumn(name = "user_id")
+    User user;
+
+    @ManyToOne
+    @MapsId("role_id")
+    @JoinColumn(name = "role_id")
+    Role role;
 }

@@ -21,9 +21,23 @@ public class Association {
     private Grade grade;
 
     @ManyToOne
+    @JoinColumn(name = "course_id", referencedColumnName = "course_id", nullable = false)
     private Course course;
+
     @ManyToOne
+    @JoinColumn(name = "period_id", referencedColumnName = "period_id", nullable = false)
     private Period period;
 
-
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(
+                    name = "user_id",
+                    referencedColumnName = "user_id",
+                    nullable = false),
+            @JoinColumn(
+                    name = "role_id",
+                    referencedColumnName = "role_id",
+                    nullable = false)
+    })
+    private UserRole user_role;
 }

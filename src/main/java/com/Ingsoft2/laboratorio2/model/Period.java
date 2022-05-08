@@ -16,9 +16,6 @@ public class Period {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int period_id;
+    @Column(nullable = false, length = 20)
     private String period_name;
-
-
-
-
 }

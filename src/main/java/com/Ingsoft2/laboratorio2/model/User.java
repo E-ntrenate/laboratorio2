@@ -18,22 +18,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int user_id;
+
+    @Column(nullable = false, length = 10)
     private String username;
+    @Column(nullable = false, length = 256)
     private String password;
+    @Column(nullable = false, length = 100)
     private String names;
+    @Column(nullable = false, length = 100)
     private String surnames;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "user_id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "role_id"))
-    private Collection<Role> roles;
-
-
-
-
-
+    @OneToMany(mappedBy = "user")
+    Collection<UserRole> roles;
 }

@@ -16,9 +16,8 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int course_id;
+    @Column(nullable = false,length = 100)
     private String course_name;
+    @Column(nullable = false)
     private int duration_hours;
-
-
-
 }
